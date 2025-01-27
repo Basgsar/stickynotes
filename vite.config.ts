@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: '/sticky-notes/', // Replace 'sticky-notes' with your repository name
+  base: './', // This will make all assets use relative paths
   plugins: [react()],
   server: {
     port: 5173,
@@ -21,7 +21,10 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-        }
+        },
+        assetFileNames: 'assets/[name].[ext]',
+        chunkFileNames: 'assets/[name].js',
+        entryFileNames: 'assets/[name].js'
       }
     }
   }
